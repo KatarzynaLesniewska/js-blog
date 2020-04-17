@@ -3,6 +3,9 @@
 {
 
     const titleClickHandler = function(event){
+        event.preventDefault();
+        //console.log('preventDefault- czy działa??');
+
         const clickedElement = this;
         console.log('Link was clicked!');
         console.log('event:', event);
