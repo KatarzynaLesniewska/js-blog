@@ -97,11 +97,17 @@
 
             /* get the title from the title element, zapisz do const */
 
-            /* create HTML of the link, zapisz do const */
 
-            
+            /* create HTML of the link, zapisz do const */
+            /*
+            const linkHTML = '<li><a href="#"><span></span></a></li>';
+            const linkHTML = '<li><a href="#' + '"><span>' + '</span></a></li>';
+            */
+            const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+            console.log('linkHTML:', linkHTML);
             
             /* insert link into titleList, lewa colm */
+            
 
             
     }
