@@ -107,7 +107,26 @@
             console.log('linkHTML:', linkHTML);
             
             /* insert link into titleList, lewa colm */
+            titleList.innerHTML = titleList.innerHTML + linkHTML;
+
+            /* 
+            Dwa sposoby optymalizacji kodu 
+
+            1) PRZYLEGŁY HTML insertAdjacentHTML
+
+            https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+            element.insertAdjacentHTML(position, text);
+
+            linkHTML.insertAdjacentHTML('afterbegin', articleId);
+
+            linkHTML.insertAdjacentHTML('beforeend', articleTitle);
+            */
+
+            /* Zbudowanie kodu HTML wszystkich linków */  
             
+
+
+
 
             
     }
