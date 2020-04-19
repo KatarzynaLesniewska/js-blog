@@ -122,10 +122,58 @@
             linkHTML.insertAdjacentHTML('beforeend', articleTitle);
             */
 
-            /* Zbudowanie kodu HTML wszystkich linków */  
+            /* Zbudowanie kodu HTML wszystkich linków; jak działa zakres zmiennych (ang. variable scope) 
             
+                const optArticleSelector = '.post',
+                optTitleSelector = '.post-title',
+                optTitleListSelector = '.titles';
 
+                function generateTitleLinks(){
 
+                    *remove contents of titleList *
+                    * const titleList = document.querySelector(optTitleListSelector).innerHTML;
+
+                        function clearMessages(){
+                            document.getElementById('messages').innerHTML = '';
+                        } 
+
+                        clearMessages();  
+                    *
+                
+                    * find all the articles and save them to variable: articles *
+                    * const articles = document.querySelectorAll('.post');
+                    * 
+
+                    let html = '';
+
+                    for(let article of articles){
+                        * get the article id *
+                        * const articleId = clickedElement.getAttribute('id');
+                        *
+
+                        * find the title element *
+                        * const articleTitle = article.querySelector(optTitleSelector).innerHTML; 
+                        *
+
+                        * get the title from the title element *
+                        * ... *
+
+                        * create HTML of the link *
+                        * const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+                        console.log('linkHTML:', linkHTML);
+                        *
+
+                        * insert link into html variable *
+                        html = html + linkHTML;
+
+                        console.log('html:', html);
+                    }
+
+                    titleList.innerHTML = html;
+                }
+
+                generateTitleLinks();
+            */  
 
 
             
