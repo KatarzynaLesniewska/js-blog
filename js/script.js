@@ -34,11 +34,11 @@
         const articleSelector = clickedElement.getAttribute('href');
         console.log('clickedElementsAttribute:', articleSelector);
     
-        /* [DONE] find the correct article using the selector (value of 'href' attribute) */
+        /* [DONE] find the clicked article using the selector (value of 'href' attribute) */
         const targetArticle = document.querySelector(articleSelector);
         console.log('targetArticle:', targetArticle);
 
-        /* [DONE] add class 'active' to the correct article */
+        /* [DONE] add class 'active' to the clicked article */
         targetArticle.classList.add('active');
     }
     
@@ -48,31 +48,48 @@
         link.addEventListener('click', titleClickHandler);
     }
 
-    // Część samodzielna looool
+    // Część samodzielna looool 
+
+    /* Tym razem zastosujemy dobrą praktykę, którą jest 
+    zapisanie "ustawień" skryptu w stałych. Dzięki temu 
+    będzie można łatwo przystosować kod np. do zmiany 
+    nazewnictwa klas w kodzie HTML. Aby odróżnić te stałe, 
+    ich nazwy zaczniemy od prefiksu opt – skrót od options.
+    */
 
     const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';
 
     function generateTitleLinks(){
+        console.log('generateTitleLinks- czy została wykonana?');
 
-    /* remove contents of titleList */
+        /* remove contents of titleList */
+        const titleList = document.querySelector(optTitleListSelector);
 
-    /* for each article */
+        /* 
+        querySelector do tej pory wykonywaliśmy zawsze na elemencie 
+        document, ale równie dobrze możemy wykonać tę funkcję na 
+        dowolnym innym elemencie. Dzięki temu będziemy mogli wyszukać 
+        tytuł w konkretnym artykule!
+        */
 
-        /* get the article id */
+        /* for each article */
 
-        /* find the title element */
+            /* get the article id, zapisz do const */
 
-        /* get the title from the title element */
+            /* find the title element, zapisz do const */
 
-        /* create HTML of the link */
+            /* get the title from the title element, zapisz do const */
 
-        /* insert link into titleList */
+            /* create HTML of the link, zapisz do const */
+            
+            /* insert link into titleList, lewa colm */
 
-        
+            
     }
 
+    // wywołanie, Ta funkcja ma uruchamiać się od razu po odświeżeniu strony,
     generateTitleLinks();
 
-}
+}   
