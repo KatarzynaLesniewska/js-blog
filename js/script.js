@@ -67,7 +67,13 @@
         /* remove contents of titleList */
         const titleList = document.querySelector(optTitleListSelector);
 
-        /* 
+        function clearMessages(){
+            document.getElementById('messages').innerHTML = '';
+        } 
+
+        clearMessages();
+
+        /*  
         querySelector do tej pory wykonywaliśmy zawsze na elemencie 
         document, ale równie dobrze możemy wykonać tę funkcję na 
         dowolnym innym elemencie. Dzięki temu będziemy mogli wyszukać 
