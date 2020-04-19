@@ -65,30 +65,41 @@
         console.log('generateTitleLinks- czy została wykonana?');
 
         /* remove contents of titleList */
-        const titleList = document.querySelector(optTitleListSelector);
+        const titleList = document.querySelector(optTitleListSelector).innerHTML;
 
         function clearMessages(){
             document.getElementById('messages').innerHTML = '';
         } 
 
-        clearMessages();
+        clearMessages(); 
 
-        /*  
-        querySelector do tej pory wykonywaliśmy zawsze na elemencie 
-        document, ale równie dobrze możemy wykonać tę funkcję na 
-        dowolnym innym elemencie. Dzięki temu będziemy mogli wyszukać 
-        tytuł w konkretnym artykule!
-        */
+        /* for each article */ 
+        const articles = document.querySelectorAll('.post');
 
-        /* for each article */
+        for(let article of articles){
+            article.classList.contains('post');
+        }
 
-            /* get the article id, zapisz do const */
+            /* get the article id, zapisz do const (clickedElement tutaj jest ok??) */
+            const articleId = clickedElement.getAttribute('id');
+            console.log('clickedElementsAttribute:', articleId);
+
+            for(let article of articles){
+                article.classList.contains('id');
+            }
 
             /* find the title element, zapisz do const */
+            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+            for(let article of articles){
+                article.classList.contains(optTitleSelector);
+            }
 
             /* get the title from the title element, zapisz do const */
 
             /* create HTML of the link, zapisz do const */
+
+            
             
             /* insert link into titleList, lewa colm */
 
