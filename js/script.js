@@ -42,11 +42,14 @@
         targetArticle.classList.add('active');
     }
     
+    /* Ten cod kazali z dokładnie tego miejsca przeniesc w inne, żeby naprawić buga
     const links = document.querySelectorAll('.titles a');
+    console.log('links:', links);
     
     for(let link of links){
         link.addEventListener('click', titleClickHandler);
     }
+    */
 
     // Część samodzielna looool 
 
@@ -173,13 +176,30 @@
                 }
 
                 generateTitleLinks();
-            */  
+            */   
+
+        // Przywrócenie funkcjonalności klikania linków
+          
+
 
 
             
     }
 
     // wywołanie, Ta funkcja ma uruchamiać się od razu po odświeżeniu strony,
-    generateTitleLinks();
+    generateTitleLinks(); 
+
+
+    /* Dlatego kod odpowiedzialny za powiązanie kliknięcia w linki z 
+    funkcją titleClickHandler musimy przenieść na sam koniec 
+    funkcji generateTitleLinks.
+    */
+   
+    const links = document.querySelectorAll('.titles a');
+    console.log('links:', links);
+    
+    for(let link of links){
+        link.addEventListener('click', titleClickHandler);
+    }
 
 }   
