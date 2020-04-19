@@ -2,38 +2,38 @@
 
 {
 
-    const titleClickHandler = function(event){
+    const titleClickHandler = function (event) {
         event.preventDefault();
         //console.log('preventDefault- czy działa??');
 
         const clickedElement = this;
         console.log('Link was clicked!');
         console.log('event:', event);
-    
+
         /* [DONE] remove class 'active' from all article links  */
         const activeLinks = document.querySelectorAll('.titles a.active');
 
-        for(let activeLink of activeLinks){
+        for (let activeLink of activeLinks) {
             activeLink.classList.remove('active');
         }
-    
+
         /* [DONE] add class 'active' to the clicked link */
         console.log('clickedElement:', clickedElement);
         console.log('clickedElement (with plus): ' + clickedElement);
 
         clickedElement.classList.add('active');
-    
+
         /* [DONE] remove class 'active' from all articles */
         const activeArticles = document.querySelectorAll('.posts article.active');
 
-        for(let activeArticle of activeArticles){
+        for (let activeArticle of activeArticles) {
             activeArticle.classList.remove('active');
         }
-    
-        /* [DONE] get 'href' attribute from the clicked link */ 
+
+        /* [DONE] get 'href' attribute from the clicked link */
         const articleSelector = clickedElement.getAttribute('href');
         console.log('clickedElementsAttribute:', articleSelector);
-    
+
         /* [DONE] find the clicked article using the selector (value of 'href' attribute) */
         const targetArticle = document.querySelector(articleSelector);
         console.log('targetArticle:', targetArticle);
@@ -41,7 +41,7 @@
         /* [DONE] add class 'active' to the clicked article */
         targetArticle.classList.add('active');
     }
-    
+
     /* Ten cod kazali z dokładnie tego miejsca przeniesc w inne, żeby naprawić buga
     const links = document.querySelectorAll('.titles a');
     console.log('links:', links);
@@ -61,144 +61,144 @@
     */
 
     const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
+        optTitleSelector = '.post-title',
+        optTitleListSelector = '.titles';
 
-    function generateTitleLinks(){
+    function generateTitleLinks() {
         console.log('generateTitleLinks- czy została wykonana?');
 
         /* remove contents of titleList */
         const titleList = document.querySelector(optTitleListSelector).innerHTML;
 
-        function clearMessages(){
+        function clearMessages() {
             document.getElementById('messages').innerHTML = '';
-        } 
+        }
 
-        clearMessages(); 
+        clearMessages();
 
-        /* for each article */ 
+        /* for each article */
         const articles = document.querySelectorAll('.post');
 
-        for(let article of articles){
+        for (let article of articles) {
             article.classList.contains('post');
         }
 
-            /* get the article id, zapisz do const (clickedElement tutaj jest ok??) */
-            const articleId = clickedElement.getAttribute('id');
-            console.log('clickedElementsAttribute:', articleId);
+        /* get the article id, zapisz do const (clickedElement tutaj jest ok??) */
+        const articleId = clickedElement.getAttribute('id');
+        console.log('clickedElementsAttribute:', articleId);
 
-            for(let article of articles){
-                article.classList.contains('id');
-            }
+        for (let article of articles) {
+            article.classList.contains('id');
+        }
 
-            /* find the title element, zapisz do const */
-            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        /* find the title element, zapisz do const */
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
-            for(let article of articles){
-                article.classList.contains(optTitleSelector);
-            }
+        for (let article of articles) {
+            article.classList.contains(optTitleSelector);
+        }
 
-            /* get the title from the title element, zapisz do const */
+        /* get the title from the title element, zapisz do const */
 
 
-            /* create HTML of the link, zapisz do const */
-            /*
-            const linkHTML = '<li><a href="#"><span></span></a></li>';
-            const linkHTML = '<li><a href="#' + '"><span>' + '</span></a></li>';
-            */
-            const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-            console.log('linkHTML:', linkHTML);
+        /* create HTML of the link, zapisz do const */
+        /*
+        const linkHTML = '<li><a href="#"><span></span></a></li>';
+        const linkHTML = '<li><a href="#' + '"><span>' + '</span></a></li>';
+        */
+        const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+        console.log('linkHTML:', linkHTML);
+
+        /* insert link into titleList, lewa colm */
+        titleList.innerHTML = titleList.innerHTML + linkHTML;
+
+        /* 
+        Dwa sposoby optymalizacji kodu 
+
+        1) PRZYLEGŁY HTML insertAdjacentHTML
+
+        https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+        element.insertAdjacentHTML(position, text);
+
+        linkHTML.insertAdjacentHTML('afterbegin', articleId);
+
+        linkHTML.insertAdjacentHTML('beforeend', articleTitle);
+        */
+
+        /* Zbudowanie kodu HTML wszystkich linków; jak działa zakres zmiennych (ang. variable scope) 
+        
+            const optArticleSelector = '.post',
+            optTitleSelector = '.post-title',
+            optTitleListSelector = '.titles';
+
+            function generateTitleLinks(){
+
+                *remove contents of titleList *
+                * const titleList = document.querySelector(optTitleListSelector).innerHTML;
+
+                    function clearMessages(){
+                        document.getElementById('messages').innerHTML = '';
+                    } 
+
+                    clearMessages();  
+                *
             
-            /* insert link into titleList, lewa colm */
-            titleList.innerHTML = titleList.innerHTML + linkHTML;
+                * find all the articles and save them to variable: articles *
+                * const articles = document.querySelectorAll('.post');
+                * 
 
-            /* 
-            Dwa sposoby optymalizacji kodu 
+                let html = '';
 
-            1) PRZYLEGŁY HTML insertAdjacentHTML
-
-            https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-            element.insertAdjacentHTML(position, text);
-
-            linkHTML.insertAdjacentHTML('afterbegin', articleId);
-
-            linkHTML.insertAdjacentHTML('beforeend', articleTitle);
-            */
-
-            /* Zbudowanie kodu HTML wszystkich linków; jak działa zakres zmiennych (ang. variable scope) 
-            
-                const optArticleSelector = '.post',
-                optTitleSelector = '.post-title',
-                optTitleListSelector = '.titles';
-
-                function generateTitleLinks(){
-
-                    *remove contents of titleList *
-                    * const titleList = document.querySelector(optTitleListSelector).innerHTML;
-
-                        function clearMessages(){
-                            document.getElementById('messages').innerHTML = '';
-                        } 
-
-                        clearMessages();  
+                for(let article of articles){
+                    * get the article id *
+                    * const articleId = clickedElement.getAttribute('id');
                     *
-                
-                    * find all the articles and save them to variable: articles *
-                    * const articles = document.querySelectorAll('.post');
-                    * 
 
-                    let html = '';
+                    * find the title element *
+                    * const articleTitle = article.querySelector(optTitleSelector).innerHTML; 
+                    *
 
-                    for(let article of articles){
-                        * get the article id *
-                        * const articleId = clickedElement.getAttribute('id');
-                        *
+                    * get the title from the title element *
+                    * ... *
 
-                        * find the title element *
-                        * const articleTitle = article.querySelector(optTitleSelector).innerHTML; 
-                        *
+                    * create HTML of the link *
+                    * const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+                    console.log('linkHTML:', linkHTML);
+                    *
 
-                        * get the title from the title element *
-                        * ... *
+                    * insert link into html variable *
+                    html = html + linkHTML;
 
-                        * create HTML of the link *
-                        * const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-                        console.log('linkHTML:', linkHTML);
-                        *
-
-                        * insert link into html variable *
-                        html = html + linkHTML;
-
-                        console.log('html:', html);
-                    }
-
-                    titleList.innerHTML = html;
+                    console.log('html:', html);
                 }
 
-                generateTitleLinks();
-            */   
+                titleList.innerHTML = html;
+            }
+
+            generateTitleLinks();
+        */
 
         // Przywrócenie funkcjonalności klikania linków
-          
 
 
 
-            
+
+
     }
 
     // wywołanie, Ta funkcja ma uruchamiać się od razu po odświeżeniu strony,
-    generateTitleLinks(); 
+    generateTitleLinks();
 
 
     /* Dlatego kod odpowiedzialny za powiązanie kliknięcia w linki z 
     funkcją titleClickHandler musimy przenieść na sam koniec 
     funkcji generateTitleLinks.
     */
-   
+
     const links = document.querySelectorAll('.titles a');
     console.log('links:', links);
-    
-    for(let link of links){
+
+    for (let link of links) {
         link.addEventListener('click', titleClickHandler);
     }
 
