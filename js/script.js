@@ -78,7 +78,7 @@
     clearMessages();
 
     /* for each article */
-    const articles = document.querySelectorAll('.post');
+    const articles = document.querySelectorAll(optArticleSelector);
 
     for (let article of articles) {
       article.classList.contains('post');
