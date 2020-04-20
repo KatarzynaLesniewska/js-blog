@@ -82,36 +82,28 @@
 
     for (let article of articles) {
       article.classList.contains('post');
+
+      /* get the article id, zapisz do const (clickedElement tutaj jest ok??) */
+      const articleId = clickedElement.getAttribute('id');
+      console.log('clickedElementsAttribute:', articleId);
+
+      /* find the title element, zapisz do const */
+      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+      /* get the title from the title element, zapisz do const */
+
+
+      /* create HTML of the link, zapisz do const */
+      /*
+      const linkHTML = '<li><a href="#"><span></span></a></li>';
+      const linkHTML = '<li><a href="#' + '"><span>' + '</span></a></li>';
+      */
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      console.log('linkHTML:', linkHTML);
+
+      /* insert link into titleList, lewa colm */
+      titleList.innerHTML = titleList.innerHTML + linkHTML;
     }
-
-    /* get the article id, zapisz do const (clickedElement tutaj jest ok??) */
-    const articleId = clickedElement.getAttribute('id');
-    console.log('clickedElementsAttribute:', articleId);
-
-    for (let article of articles) {
-      article.classList.contains('id');
-    }
-
-    /* find the title element, zapisz do const */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-
-    for (let article of articles) {
-      article.classList.contains(optTitleSelector);
-    }
-
-    /* get the title from the title element, zapisz do const */
-
-
-    /* create HTML of the link, zapisz do const */
-    /*
-    const linkHTML = '<li><a href="#"><span></span></a></li>';
-    const linkHTML = '<li><a href="#' + '"><span>' + '</span></a></li>';
-    */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log('linkHTML:', linkHTML);
-
-    /* insert link into titleList, lewa colm */
-    titleList.innerHTML = titleList.innerHTML + linkHTML;
 
     /*
     Dwa sposoby optymalizacji kodu
@@ -199,30 +191,90 @@
 
   function generateTags() {
     /* find all articles */
+    const articles = document.querySelectorAll('.post');
 
     /* START LOOP: for every article: */
+    for (let article of articles) {
+      article.classList.contains('post');
 
-    /* find tags wrapper */
+      /* find tags wrapper */
+      const titleList = article.querySelector(optArticleTagsSelector).innerHTML;
 
-    /* make html variable with empty string */
+      /* make html variable with empty string */
+      let html = '';
 
-    /* get tags from data-tags attribute */
+      /* get tags from data-tags attribute */
+      // get 'data-tags' from the article
+      const articleTags = article.getAttribute('data-tags');
+      console.log('articleTags:', articleTags);
 
-    /* split tags into array */
+      /* split tags into array */
+      const articleTagsArray = articleTags.split(' ');
+      console.log('articleTagsArray:', articleTagsArray);
 
-    /* START LOOP: for each tag */
+      /* START LOOP: for each tag */
+      for (let tag of articleTagsArray) {
+        console.log('tag:', tag);
 
-    /* generate HTML of the link */
+        /* generate HTML of the link */
 
-    /* add generated code to html variable */
+        /* add generated code to html variable */
+        const TagHTMLLink = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+        console.log('TagHTMLLink:', TagHTMLLink);
 
-    /* END LOOP: for each tag */
+        /* END LOOP: for each tag */
+      }
 
-    /* insert HTML of all the links into the tags wrapper */
+      /* insert HTML of all the links into the tags wrapper */
+      titleList.innerHTML = titleList.innerHTML + TagHTMLLink;
 
-    /* END LOOP: for every article: */
+      /* END LOOP: for every article: */
+    }
   }
 
   generateTags();
 
+  //W tym celu dodaj na końcu pliku następujący szablon:
+
+  function tagClickHandler(event){
+    /* prevent default action for this event */
+
+    /* make new constant named "clickedElement" and give it the value of "this" */
+
+    /* make a new constant "href" and read the attribute "href" of the clicked element */
+
+    /* make a new constant "tag" and extract tag from the "href" constant */
+
+    /* find all tag links with class active */
+
+    /* START LOOP: for each active tag link */
+
+      /* remove class active */
+
+    /* END LOOP: for each active tag link */
+
+    /* find all tag links with "href" attribute equal to the "href" constant */
+
+    /* START LOOP: for each found tag link */
+
+      /* add class active */
+
+    /* END LOOP: for each found tag link */
+
+    /* execute function "generateTitleLinks" with article selector as argument */
+  }
+
+  function addClickListenersToTags(){
+    /* find all links to tags */
+
+    /* START LOOP: for each link */
+
+      /* add tagClickHandler as event listener for that link */
+
+    /* END LOOP: for each link */
+  }
+
+  addClickListenersToTags();
+
 }
+
