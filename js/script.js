@@ -180,26 +180,48 @@
 
     // Przywrócenie funkcjonalności klikania linków
 
+    /* Dlatego kod odpowiedzialny za powiązanie kliknięcia w linki z
+    funkcją titleClickHandler musimy przenieść na sam koniec
+    funkcji generateTitleLinks.
+    */
+    const links = document.querySelectorAll('.titles a');
+    console.log('links:', links);
 
-
-
+    for (let link of links) {
+      link.addEventListener('click', titleClickHandler);
+    }
 
   }
 
   // wywołanie, Ta funkcja ma uruchamiać się od razu po odświeżeniu strony,
   generateTitleLinks();
 
+  function generateTags() {
+    /* find all articles */
 
-  /* Dlatego kod odpowiedzialny za powiązanie kliknięcia w linki z
-  funkcją titleClickHandler musimy przenieść na sam koniec
-  funkcji generateTitleLinks.
-  */
+    /* START LOOP: for every article: */
 
-  const links = document.querySelectorAll('.titles a');
-  console.log('links:', links);
+    /* find tags wrapper */
 
-  for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
+    /* make html variable with empty string */
+
+    /* get tags from data-tags attribute */
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+    /* generate HTML of the link */
+
+    /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+    /* END LOOP: for every article: */
   }
+
+  generateTags();
 
 }
