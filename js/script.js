@@ -65,7 +65,7 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list';
 
-  function generateTitleLinks() {
+  function generateTitleLinks(customSelector = '') {
     console.log('generateTitleLinks- czy została wykonana?');
 
     /* remove contents of titleList */
@@ -78,7 +78,8 @@
     clearMessages();
 
     /* for each article */
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    console.log('customSelector:', customSelector);
 
     for (let article of articles) {
       article.classList.contains('post');
