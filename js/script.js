@@ -40,7 +40,7 @@
 
     /* [DONE] add class 'active' to the clicked article */
     targetArticle.classList.add('active');
-  }
+  };
 
   /* Ten cod kazali z dokładnie tego miejsca przeniesc w inne, żeby naprawić buga
   const links = document.querySelectorAll('.titles a');
