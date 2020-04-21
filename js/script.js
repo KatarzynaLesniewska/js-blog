@@ -71,12 +71,6 @@
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector).innerHTML;
 
-    function clearMessages() {
-      document.getElementById('messages').innerHTML = '';
-    }
-
-    clearMessages();
-
     /* for each article */
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
     console.log('customSelector:', customSelector);
