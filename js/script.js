@@ -203,7 +203,7 @@
       /* make html variable with empty string */
       let html = '';
 
-      /* get tags from data-tags attribute */
+      /* 1. get tags from data-tags attribute */
       // get 'data-tags' from the article
       const articleTags = article.getAttribute('data-tags');
       console.log('articleTags:', articleTags);
@@ -216,16 +216,16 @@
       for (let tag of articleTagsArray) {
         console.log('tag:', tag);
 
-        /* generate HTML of the link */
+        /* 2. generate HTML of the link */
 
         /* add generated code to html variable */
         const TagHTMLLink = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
         console.log('TagHTMLLink:', TagHTMLLink);
 
-        /* [NEW] check if this link is NOT already in allTags */
-        if(allTags.indexOf(linkHTML) == -1){
-          /* [NEW] add generated code to allTags array */
-          allTags.push(linkHTML);
+        /* 3. [NEW] check if this link is NOT already in allTags */
+        if(allTags.indexOf(TagHTMLLink) == -1){
+          /* 4. [NEW] add generated code to allTags array */
+          allTags.push(TagHTMLLink);
         }
 
         /* END LOOP: for each tag */
@@ -237,10 +237,16 @@
       /* END LOOP: for every article: */
     }
 
-    /* [NEW] find list of tags in right column */
+    /* 5.a [NEW] find list of tags in right column */
     const tagList = document.querySelector('.tags');
 
-    /* [NEW] add html from allTags to tagList */
+    /*
+    i dodajemy do niej wszystkie linki znajdujące się w tablicy
+    allTagsLinks, łącząc je ze sobą za pomocą spacji
+    (kod pod komentarzem  [NEW] add html from allTags to tagList).
+    */
+
+    /* 5.b [NEW] add html from allTags to tagList */
     tagList.innerHTML = allTags.join(' ');
 
   }
