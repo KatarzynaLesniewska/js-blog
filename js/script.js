@@ -186,6 +186,23 @@
   // wywołanie, Ta funkcja ma uruchamiać się od razu po odświeżeniu strony,
   generateTitleLinks();
 
+  function calculateTagsParams(tags) {
+    for(let tag in tags){
+      console.log(tag + ' is used ' + tags[tag] + ' times');
+
+      if(tags[tag] > params.max){
+        params.max = tags[tag];
+      }
+
+      if(tags[tag] > params.min){
+        params.min = tags[tag];
+      }
+
+    }
+    return params;
+
+  }
+
   function generateTags() {
     /* {O} [NEW] create a new variable allTags with an empty object */
     let allTags = {};
