@@ -65,7 +65,10 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.tags.list';  //coś innego w html <ul class="list tags">
+    optTagsListSelector = '.tags.list',
+    //coś innego w html <ul class="list tags">
+    optCloudClassCount = '5',
+    optCloudClassPrefix = 'tag-size-';
 
   function generateTitleLinks(customSelector = '') {
     console.log('generateTitleLinks- czy została wykonana?');
