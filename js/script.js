@@ -187,8 +187,8 @@
   generateTitleLinks();
 
   function generateTags() {
-    /* [NEW] create a new variable allTags with an empty array */
-    let allTags = [];
+    /* {O} [NEW] create a new variable allTags with an empty object */
+    let allTags = {};
 
     /* find all articles */
     const articles = document.querySelectorAll('.post');
@@ -222,10 +222,12 @@
         const TagHTMLLink = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
         console.log('TagHTMLLink:', TagHTMLLink);
 
-        /* 3. [NEW] check if this link is NOT already in allTags */
-        if(allTags.indexOf(TagHTMLLink) == -1){
-          /* 4. [NEW] add generated code to allTags array */
-          allTags.push(TagHTMLLink);
+        /* 3. {O} [NEW] check if this link is NOT already in allTags */
+        if(!allTags[tag]) {
+          /* 4. {O} [NEW] add tag to allTags object */
+          allTags[tag] = 1;
+        } else {
+          allTags[tag]++;
         }
 
         /* END LOOP: for each tag */
@@ -246,8 +248,9 @@
     (kod pod komentarzem  [NEW] add html from allTags to tagList).
     */
 
-    /* 5.b [NEW] add html from allTags to tagList */
-    tagList.innerHTML = allTags.join(' ');
+    /* 5.b {O} [NEW] add html from allTags to tagList */
+    // tagList.innerHTML = allTags.join(' ');
+    console.log(allTags);
 
   }
 
