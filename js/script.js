@@ -63,8 +63,9 @@
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list';
-  optArticleAuthorSelector = '.post-author';
+    optArticleTagsSelector = '.post-tags .list',
+    optArticleAuthorSelector = '.post-author',
+    optTagsListSelector = '.tags.list';  //coś innego w html <ul class="list tags">
 
   function generateTitleLinks(customSelector = '') {
     console.log('generateTitleLinks- czy została wykonana?');
@@ -384,5 +385,8 @@
 
   addClickListenersToAuthors();
 
+  // Wyświetlanie listy tagów
+
+  xx
 
 }
