@@ -64,7 +64,7 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list';
-    optArticleAuthorSelector = '.post-author';
+  optArticleAuthorSelector = '.post-author';
 
   function generateTitleLinks(customSelector = '') {
     console.log('generateTitleLinks- czy została wykonana?');
@@ -232,7 +232,7 @@
 
   //W tym celu dodaj na końcu pliku następujący szablon:
 
-  function tagClickHandler(event){
+  function tagClickHandler(event) {
     /* prevent default action for this event */
     event.preventDefault();
     console.log('preventDefault- czy działa?');
@@ -275,21 +275,19 @@
 
   }
 
-  function addClickListenersToTags(){
+  function addClickListenersToTags() {
     /* find all links to tags */
     const links = document.querySelectorAll('#href a');
-    console.log('links:', links);
+    console.log('tagslinks:', links);
 
     /* START LOOP: for each link; add tagClickHandler as event listener for that link */
-    for(let link of links){
+    for (let link of links) {
       link.addEventListener('click', tagClickHandler);
     }
     /* END LOOP: for each link */
   }
 
   addClickListenersToTags();
-
-  ////////////////////////////////////////////////////////////////////
 
   function generateAuthors() {
     /* find all authors */
@@ -325,7 +323,7 @@
 
   generateAuthors();
 
-  function authorClickHandler(event){
+  function authorClickHandler(event) {
     /* prevent default action for this event */
     event.preventDefault();
     console.log('preventDefault- czy działa?');
@@ -372,13 +370,13 @@
 
   }
 
-  function addClickListenersToAuthors(){
-    /* find all links to tags */
+  function addClickListenersToAuthors() {
+    /* find all links to authors */
     const links = document.querySelectorAll('#href a');
-    console.log('links:', links);
+    console.log('authorslinks:', links);
 
     /* START LOOP: for each link; add authorClickHandler as event listener for that link */
-    for(let link of links){
+    for (let link of links) {
       link.addEventListener('click', authorClickHandler);
     }
     /* END LOOP: for each link */
