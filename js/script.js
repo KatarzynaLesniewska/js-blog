@@ -206,6 +206,8 @@
 
   }
 
+  function calculateTagClass(count,params) {}
+
   function generateTags() {
     /* {O} [NEW] create a new variable allTags with an empty object */
     let allTags = {};
@@ -285,7 +287,14 @@
     for (let tag in allTags) {
       /* [NEW] generate code of a link and add it to allTagsHTML */
       /* allTagsHTML += tag + ' (' + allTags[tag] + ') '; */
-      allTagsHTML += '<li><a href="#tag-' + tag + '"><span> (' + allTags[tag] + ')' + '</span></a></li>';
+
+      const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParam) + '</li>';
+      console.log('tagLinkHTML:', tagLinkHTML);
+
+      /* teraz tą linie mam zmienić na to co poniżej
+      allTagsHTML += '<li><a class="calculateTagClass" href="#tag-' + tag + '"><span> (' + allTags[tag] + ')' + '</span></a></li>';
+      */
+      allTagsHTML += tagLinkHTML;
       console.log('allTagsHTML:', allTagsHTML);
     }
 
