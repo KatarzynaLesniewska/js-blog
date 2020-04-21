@@ -64,6 +64,7 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list';
+    optArticleAuthorSelector = '.post-author';
 
   function generateTitleLinks(customSelector = '') {
     console.log('generateTitleLinks- czy została wykonana?');
@@ -288,6 +289,105 @@
 
   addClickListenersToTags();
 
+  ////////////////////////////////////////////////////////////////////
+
+  function generateAuthors() {
+    /* find all authors */
+    const authors = document.querySelectorAll(optArticleAuthorSelector);
+
+    /* START LOOP: for every author: */
+    for (let author of authors) {
+      author.classList.contains('.post-author');
+
+      /* find authors wrapper */
+      const authorList = author.querySelector(optArticleAuthorSelector).innerHTML;
+
+      /* make html variable with empty string */
+      let html = '';
+
+      /* get authors from data-author attribute */
+      // get 'data-author'attribute from the article
+      const articleAuthors = author.getAttribute('data-author');
+      console.log('articleAuthors:', articleAuthors);
+
+      /* split tags into array */ // tu nie trzeba
+      /* START LOOP: for each tag */ // bez pętli po tagach
+      /* generate HTML of the link & add generated code to html variable */
+      const authorHTMLLink = '<li><a href="#post-author' + author + '"><span>' + author + '</span></a></li>';
+      console.log('authorHTMLLink:', authorHTMLLink);
+
+      /* insert HTML of all the links into the authors wrapper */
+      authorList.innerHTML = authorList.innerHTML + authorHTMLLink;
+
+      /* END LOOP: for every author: */
+    }
+  }
+
+  generateAuthors();
+
+  function authorClickHandler(event){
+    /* prevent default action for this event */
+    event.preventDefault();
+    console.log('preventDefault- czy działa?');
+
+    /* make new constant named "clickedElement" and give it the value of "this" */
+    const clickedElement = this;
+    console.log('Link was clicked!');
+    console.log('event:', event);
+
+    /* make a new constant "href" and read the attribute "href" of the clicked element */
+    const href = clickedElement.getAttribute('href');
+    console.log('clickedElementsAttribute:', clickedElement);
+
+    /* make a new constant "tag" and extract tag from the "href" constant */
+    const tag = href.replace('#tag-', '');
+
+    /* find all tag links with class active */
+    const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+    console.log('activeTagLinks:', activeTagLinks);
+
+    /* START LOOP: for each active tag link; remove class active */
+    for (let activeTagLink of activeTagLinks) {
+      activeTagLink.classList.remove('active');
+    }
+    /* END LOOP: for each active tag link */
+
+    /* find all tag links with "href" attribute equal to the "href" constant */
+    const equalHrefTagLinks = document.querySelectorAll('a[href="' + href + '"]');
+    console.log('equalHrefTagLinks:', equalHrefTagLinks);
+
+    /* START LOOP: for each found tag link; add class active */
+    for (let equalHrefTagLink of equalHrefTagLinks) {
+      equalHrefTagLink.classList.add('active');
+    }
+    /* END LOOP: for each found tag link */
+
+    /* execute function "generateTitleLinks" with article selector as argument */
+    // wywołujemy tą funkcję w 2 miejscach?
+
+    /*
+    Nie musisz w żaden sposób zmieniać funkcji generateTitleLinks
+    – wystarczy, że w funkcji authorClickHandler wywołasz ją z
+    odpowiednim argumentem. Pamiętaj, że w tym wypadku w
+    selektorze atrybutu użyjesz łącznika = zamiast ~=.
+    */
+    generateTitleLinks('[data-tags~="' + tag + '"]');
+
+  }
+
+  function addClickListenersToAuthors(){
+    /* find all links to tags */
+    const links = document.querySelectorAll('#href a');
+    console.log('links:', links);
+
+    /* START LOOP: for each link; add authorClickHandler as event listener for that link */
+    for(let link of links){
+      link.addEventListener('click', authorClickHandler);
+    }
+    /* END LOOP: for each link */
+  }
+
+  addClickListenersToAuthors();
 
 
 }
