@@ -239,7 +239,7 @@
 
     /* make new constant named "clickedElement" and give it the value of "this" */
     const clickedElement = this;
-    console.log('Link was clicked!');
+    console.log('tagLink was clicked!');
     console.log('event:', event);
 
     /* make a new constant "href" and read the attribute "href" of the clicked element */
@@ -270,7 +270,7 @@
     /* END LOOP: for each found tag link */
 
     /* execute function "generateTitleLinks" with article selector as argument */
-    // wywołujemy tą funkcję w 2 miejscach?
+    // wywołujemy tą funkcję w 2 miejscach? - teraz już w 3 miejscach
     generateTitleLinks('[data-tags~="' + tag + '"]');
 
   }
@@ -313,7 +313,7 @@
       /* split tags into array */ // tu nie trzeba
       /* START LOOP: for each tag */ // bez pętli po tagach
       /* generate HTML of the link & add generated code to html variable */
-      const authorHTMLLink = '<li><a href="#post-author' + author + '"><span>' + author + '</span></a></li>';
+      const authorHTMLLink = '<li><a href="#post-author-' + author + '"><span>' + author + '</span></a></li>';
       console.log('authorHTMLLink:', authorHTMLLink);
 
       /* insert HTML of all the links into the authors wrapper */
@@ -332,38 +332,35 @@
 
     /* make new constant named "clickedElement" and give it the value of "this" */
     const clickedElement = this;
-    console.log('Link was clicked!');
+    console.log('authorLink was clicked!');
     console.log('event:', event);
 
     /* make a new constant "href" and read the attribute "href" of the clicked element */
     const href = clickedElement.getAttribute('href');
     console.log('clickedElementsAttribute:', clickedElement);
 
-    /* make a new constant "tag" and extract tag from the "href" constant */
-    const tag = href.replace('#tag-', '');
+    /* make a new constant "author" and extract author from the "href" constant */
+    const author = href.replace('#post-author-', '');
 
-    /* find all tag links with class active */
-    const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
-    console.log('activeTagLinks:', activeTagLinks);
+    /* find all author links with class active */
+    const activeAuthorLinks = document.querySelectorAll('a.active[href^="#post-author-"]');
+    console.log('activeAuthorLinks:', activeAuthorLinks);
 
-    /* START LOOP: for each active tag link; remove class active */
-    for (let activeTagLink of activeTagLinks) {
-      activeTagLink.classList.remove('active');
+    /* START LOOP: for each active author link; remove class active */
+    for (let activeAuthorLink of activeAuthorLinks) {
+      activeAuthorLink.classList.remove('active');
     }
-    /* END LOOP: for each active tag link */
+    /* END LOOP: for each active author link */
 
-    /* find all tag links with "href" attribute equal to the "href" constant */
-    const equalHrefTagLinks = document.querySelectorAll('a[href="' + href + '"]');
-    console.log('equalHrefTagLinks:', equalHrefTagLinks);
+    /* find all author links with "href" attribute equal to the "href" constant */
+    const equalHrefAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
+    console.log('equalHrefAuthorLinks:', equalHrefAuthorLinks);
 
-    /* START LOOP: for each found tag link; add class active */
-    for (let equalHrefTagLink of equalHrefTagLinks) {
-      equalHrefTagLink.classList.add('active');
+    /* START LOOP: for each found author link; add class active */
+    for (let equalHrefAuthorLink of equalHrefAuthorLinks) {
+      equalHrefAuthorLink.classList.add('active');
     }
-    /* END LOOP: for each found tag link */
-
-    /* execute function "generateTitleLinks" with article selector as argument */
-    // wywołujemy tą funkcję w 2 miejscach?
+    /* END LOOP: for each found author link */
 
     /*
     Nie musisz w żaden sposób zmieniać funkcji generateTitleLinks
@@ -371,7 +368,7 @@
     odpowiednim argumentem. Pamiętaj, że w tym wypadku w
     selektorze atrybutu użyjesz łącznika = zamiast ~=.
     */
-    generateTitleLinks('[data-tags~="' + tag + '"]');
+    generateTitleLinks('[data-author="' + author + '"]');
 
   }
 
