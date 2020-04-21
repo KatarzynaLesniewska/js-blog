@@ -254,6 +254,10 @@
     console.log(allTags);
     */
 
+    // dodanie kodu przed let allTagsHTML
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('tagsParams:', tagsParams);
+
     /* ZAMIENIONY FRAGMENT [NEW] create variable for all links HTML code */
     let allTagsHTML = '';
 
