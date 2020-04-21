@@ -190,14 +190,14 @@
   generateTitleLinks();
 
   function calculateTagsParams(tags) {
-    for(let tag in tags){
+    for (let tag in tags) {
       console.log(tag + ' is used ' + tags[tag] + ' times');
 
-      if(tags[tag] > params.max){
+      if (tags[tag] > params.max) {
         params.max = tags[tag];
       }
 
-      if(tags[tag] > params.min){
+      if (tags[tag] > params.min) {
         params.min = tags[tag];
       }
 
@@ -206,7 +206,18 @@
 
   }
 
-  function calculateTagClass(count,params) {}
+  function calculateTagClass(count, params) {
+
+    const normalizedCount = count - params.min;
+    const normalizedMax = params.max - params.min;
+    const percentage = normalizedCount / normalizedMax;
+    const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+
+    /* classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * optCloudClassCount + 1 ); */
+    return optCloudClassPrefix ;
+  }
+
+  // wywołać ?? calculateTagClass(count, params);
 
   function generateTags() {
     /* {O} [NEW] create a new variable allTags with an empty object */
