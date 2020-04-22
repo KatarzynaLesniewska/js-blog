@@ -212,10 +212,10 @@
     const normalizedCount = count - params.min;
     const normalizedMax = params.max - params.min;
     const percentage = normalizedCount / normalizedMax;
-    const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+    const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
 
     /* classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * optCloudClassCount + 1 ); */
-    return optCloudClassPrefix ;
+    return optCloudClassPrefix;
   }
 
   // wywołać ?? calculateTagClass(count, params);
@@ -378,7 +378,42 @@
 
   addClickListenersToTags();
 
+  ////////////////////////////// Authors' List
+
+  function calculateAuthorsParams(authors) {
+    for (let author in authors) {
+      console.log(author + ' is used ' + authors[author] + ' times');
+
+      if (authors[author] > params.max) {
+        params.max = authors[author];
+      }
+
+      if (authors[author] > params.min) {
+        params.min = authors[author];
+      }
+
+    }
+    return params;
+
+  }
+
+  function calculateAuthorClass(count, params) {
+
+    const normalizedCount = count - params.min;
+    const normalizedMax = params.max - params.min;
+    const percentage = normalizedCount / normalizedMax;
+    const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+
+    /* classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * optCloudClassCount + 1 ); */
+    return optCloudClassPrefix;
+  }
+
+  // wywołać ?? calculateAuthorClass(count, params);
+
   function generateAuthors() {
+    /* {O} [NEW] create a new variable allAuthors with an empty object */
+    let allAuthors = {};
+
     /* find all authors */
     const authors = document.querySelectorAll(optArticleAuthorSelector);
 
@@ -392,7 +427,7 @@
       /* make html variable with empty string */
       let html = '';
 
-      /* get authors from data-author attribute */
+      /* 1. get authors from data-author attribute */
       // get 'data-author'attribute from the article
       const articleAuthors = author.getAttribute('data-author');
       console.log('articleAuthors:', articleAuthors);
@@ -403,11 +438,60 @@
       const authorHTMLLink = '<li><a href="#post-author-' + author + '"><span>' + author + '</span></a></li>';
       console.log('authorHTMLLink:', authorHTMLLink);
 
+      /* 3. {O} [NEW] check if this link is NOT already in allAuthors */
+      if (!allAuthors[authorHTMLLink]) {
+        /* 4. {O} [NEW] add tag to allAuthors object */
+        allAuthors[authorHTMLLink] = 1;
+      } else {
+        allAuthors[authorHTMLLink]++;
+      }
+
       /* insert HTML of all the links into the authors wrapper */
       authorList.innerHTML = authorList.innerHTML + authorHTMLLink;
 
-      /* END LOOP: for every author: */
+      /* 5.a [NEW] find list of authors in right column */
+      const authorList2 = document.querySelector(optAuthorsListSelector);
+
+      /*
+      i dodajemy do niej wszystkie linki znajdujące się w tablicy
+      allAuthorsLinks, łącząc je ze sobą za pomocą spacji
+      (kod pod komentarzem  [NEW] add html from allAuthorss to authorList).
+      */
+
+      /* zamiana tego fragmentu na ten co jest pod (z 6 linijek ponizej)
+      5.b {O} [NEW] add html from allAuthors to authorList
+      // authorList.innerHTML = allAuthors.join(' ');
+      console.log(allAuthors);
+      */
+
+      // dodanie kodu przed let allAuthorsHTML
+      const authorsParams = calculateAuthorsParams(allAuthors);
+      console.log('authorsParams:', authorsParams);
+
+      /* ZAMIENIONY FRAGMENT [NEW] create variable for all links HTML code */
+      let allAuthorsHTML = '';
+
+      /* [NEW] START LOOP: for each author in allAuthors: */
+      for (let author in allAuthors) {
+        /* [NEW] generate code of a link and add it to allAuthorsHTML */
+        /* allAuthorsHTML += author + ' (' + allAuthors[author] + ') '; */
+
+        const authorLinkHTML = '<li>' + calculateAuthorClass(allAuthors[author], authorsParams) + '</li>';
+        console.log('authorLinkHTML:', authorLinkHTML);
+
+        /* teraz tą linie mam zmienić na to co poniżej
+        allAuthorsHTML += '<li><a class="calculateAuthorClass" href="#tag-' + author + '"><span> (' + allAuthors[author] + ')' + '</span></a></li>';
+        */
+        allAuthorsHTML += authorLinkHTML;
+        console.log('allAuthorsHTML:', allAuthorsHTML);
+      }
+
+      /* [NEW] END LOOP: for every author: */
     }
+
+    /*[NEW] add HTML from allAuthorsHTML to authorList */
+    authorList.innerHTML = allAuthorsHTML;
+
   }
 
   generateAuthors();
@@ -472,9 +556,5 @@
   }
 
   addClickListenersToAuthors();
-
-  // Wyświetlanie listy tagów
-
-  xx
 
 }
