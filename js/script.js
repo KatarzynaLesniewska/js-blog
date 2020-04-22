@@ -510,7 +510,9 @@
       console.log('authorsParams:', authorsParams);
 
       /* ZAMIENIONY FRAGMENT [NEW] create variable for all links HTML code */
-      let allAuthorsHTML = '';
+      /* zmieniam to na poniższe
+      let allAuthorsHTML = ''; */
+      const allAuthorsData = {authors: []};
 
       /* [NEW] START LOOP: for each author in allAuthors: */
       for (let author in allAuthors) {
@@ -523,15 +525,24 @@
         /* teraz tą linie mam zmienić na to co poniżej
         allAuthorsHTML += '<li><a class="calculateAuthorClass" href="#tag-' + author + '"><span> (' + allAuthors[author] + ')' + '</span></a></li>';
         */
-        allAuthorsHTML += authorLinkHTML;
-        console.log('allAuthorsHTML:', allAuthorsHTML);
+        /* allAuthorsHTML += authorLinkHTML;
+        console.log('allAuthorsHTML:', allAuthorsHTML); */
+
+        allAuthorsData.authors.push({
+          tag: author,
+          count: allAuthors[author],
+          className: calculateAuthorClass(allAuthors[author], authorsParams)
+        });
+
       }
 
       /* [NEW] END LOOP: for every author: */
     }
 
     /*[NEW] add HTML from allAuthorsHTML to authorList */
-    authorList.innerHTML = allAuthorsHTML;
+    /* authorList.innerHTML = allAuthorsHTML; */
+    authorList.innerHTML = templates.authorLink(allAuthorsData);
+    console.log('allAuthorsData:', allAuthorsData);
 
   }
 
