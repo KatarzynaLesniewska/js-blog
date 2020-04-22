@@ -3,7 +3,8 @@
 {
 
   const templates = {
-    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+    tagCloudLink: Handlebars.compile(document.querySelector('#templates.tagCloudLink').innerHTML)
   }
 
   const opt {
