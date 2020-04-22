@@ -4,7 +4,8 @@
 
   const templates = {
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
-    tagCloudLink: Handlebars.compile(document.querySelector('#templates.tagCloudLink').innerHTML)
+    tagCloudLink: Handlebars.compile(document.querySelector('#templates.tagCloudLink').innerHTML),
+    authorLink: Handlebars.compile(document.querySelector('#templates.authorCloudLink').innerHTML)
   }
 
   const opt {
