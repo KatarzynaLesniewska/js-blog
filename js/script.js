@@ -319,7 +319,9 @@
     console.log('tagsParams:', tagsParams);
 
     /* ZAMIENIONY FRAGMENT [NEW] create variable for all links HTML code */
-    let allTagsHTML = '';
+    /* zmieniamy linię 322 na linie 324 i
+    let allTagsHTML = ''; */
+    const allTagsData = {tags: []};
 
     /* [NEW] START LOOP: for each tag in allTags: */
     for (let tag in allTags) {
@@ -332,14 +334,23 @@
       /* teraz tą linie mam zmienić na to co poniżej
       allTagsHTML += '<li><a class="calculateTagClass" href="#tag-' + tag + '"><span> (' + allTags[tag] + ')' + '</span></a></li>';
       */
-      allTagsHTML += tagLinkHTML;
-      console.log('allTagsHTML:', allTagsHTML);
+      /* allTagsHTML += tagLinkHTML;
+      console.log('allTagsHTML:', allTagsHTML); */
+
+      allTagsData.tags.push({
+        tag: tag,
+        count: allTags[tag],
+        className: calculateTagClass(allTags[tag], tagsParams)
+      });
+
     }
 
     /* [NEW] END LOOP: for each tag in allTags: */
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    tagList.innerHTML = allTagsHTML;
+    /* tagList.innerHTML = allTagsHTML; */
+    tagList.innerHTML = templates.tagCloudLink(allTagsData);
+    console.log('allTagsData:', allTagsData);
 
   }
 
