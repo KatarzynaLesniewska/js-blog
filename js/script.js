@@ -2,6 +2,17 @@
 
 {
 
+  const optArticleSelector = '.post',
+    optTitleSelector = '.post-title',
+    optTitleListSelector = '.titles',
+    optArticleTagsSelector = '.post-tags .list',
+    optArticleAuthorSelector = '.post-author',
+    optTagsListSelector = '.tags.list',
+    //coś innego w html <ul class="list tags">
+    optCloudClassCount = '5',
+    optCloudClassPrefix = 'tag-size-',
+    optAuthorsListSelector = '.list .authors';
+
   const titleClickHandler = function (event) {
     event.preventDefault();
     //console.log('preventDefault- czy działa??');
@@ -59,16 +70,6 @@
   nazewnictwa klas w kodzie HTML. Aby odróżnić te stałe,
   ich nazwy zaczniemy od prefiksu opt – skrót od options.
   */
-
-  const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.tags.list',
-    //coś innego w html <ul class="list tags">
-    optCloudClassCount = '5',
-    optCloudClassPrefix = 'tag-size-';
 
   function generateTitleLinks(customSelector = '') {
     console.log('generateTitleLinks- czy została wykonana?');
