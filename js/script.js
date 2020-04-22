@@ -117,7 +117,11 @@
       const linkHTML = '<li><a href="#"><span></span></a></li>';
       const linkHTML = '<li><a href="#' + '"><span>' + '</span></a></li>';
       */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+
+      /* linijkę 122 mam zmienić na to co jest teraz w 123 i 124
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>'; */
+      const linkHTMLData = {id: articleId, title: articleTitle};
+      const linkHTML = templates.articleLink(linkHTMLData);
       console.log('linkHTML:', linkHTML);
 
       /* insert link into titleList, lewa colm */
@@ -271,7 +275,10 @@
         /* 2. generate HTML of the link */
 
         /* add generated code to html variable */
-        const TagHTMLLink = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+        /* linijkę 278 mam zmienić na to co jest teraz w 280 i 281
+        const TagHTMLLink = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>'; */
+        const linkHTMLData = {id: tag, title: tag};
+        const TagHTMLLink = templates.articleLink(linkHTMLData);
         console.log('TagHTMLLink:', TagHTMLLink);
 
         /* 3. {O} [NEW] check if this link is NOT already in allTags */
@@ -453,7 +460,10 @@
       /* split tags into array */ // tu nie trzeba
       /* START LOOP: for each tag */ // bez pętli po tagach
       /* generate HTML of the link & add generated code to html variable */
-      const authorHTMLLink = '<li><a href="#post-author-' + author + '"><span>' + author + '</span></a></li>';
+      /* linijkę 464 mam zmienić na to co jest teraz w 465 i 466
+      const authorHTMLLink = '<li><a href="#post-author-' + author + '"><span>' + author + '</span></a></li>'; */
+      const linkHTMLData = {id: author, title: author};
+      const authorHTMLLink = templates.articleLink(linkHTMLData);
       console.log('authorHTMLLink:', authorHTMLLink);
 
       /* 3. {O} [NEW] check if this link is NOT already in allAuthors */
