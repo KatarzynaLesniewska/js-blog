@@ -2,6 +2,10 @@
 
 {
 
+  const templates = {
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+  }
+
   const opt {
     articleSelector: '.post',
     titleSelector: '.post-title',
