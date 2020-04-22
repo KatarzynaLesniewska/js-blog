@@ -8,6 +8,11 @@ $color-dark: #444;
 $font-logo: 'Sacramento', cursive;
 $font-header: 'Oswald', sans-serif;
 $font-text: 'Source Sans Pro', sans-serif;
+$color-tag1: #8000ff;
+$color-tag2: #bf00ff;
+$color-tag3: #ff00ff;
+$color-tag4: #ff00bf;
+$color-tag5: #ff0080;
 
 /* Global */
 
@@ -121,4 +126,37 @@ body {
   p {
     margin: 0 10px 0 0;
   }
+}
+
+/* Tags Cloud */
+
+/* usuń liczby wyświetleń z kodu generującego kod HTML linków.jak??? */
+
+.list .tags {
+  display: inline;
+}
+
+.tag-size-1 {
+  font-size: 10px;
+  color: $color-tag1;
+}
+
+.tag-size-2 {
+  font-size: 16px;
+  color: $color-tag2;
+}
+
+.tag-size-3 {
+  font-size: 22px;
+  color: $color-tag3;
+}
+
+.tag-size-4 {
+  font-size: 28px;
+  color: $color-tag4;
+}
+
+.tag-size-5 {
+  font-size: 34px;
+  color: $color-tag5;
 }

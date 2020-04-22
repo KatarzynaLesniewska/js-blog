@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
 /* Variables */
 /* Global */
@@ -106,5 +107,36 @@ body {
 
 .post-tags p {
   margin: 0 10px 0 0;
+}
+
+/* Tags Cloud */
+/* usuń liczby wyświetleń z kodu generującego kod HTML linków.jak??? */
+.list .tags {
+  display: inline;
+}
+
+.tag-size-1 {
+  font-size: 10px;
+  color: #8000ff;
+}
+
+.tag-size-2 {
+  font-size: 16px;
+  color: #bf00ff;
+}
+
+.tag-size-3 {
+  font-size: 22px;
+  color: #ff00ff;
+}
+
+.tag-size-4 {
+  font-size: 28px;
+  color: #ff00bf;
+}
+
+.tag-size-5 {
+  font-size: 34px;
+  color: #ff0080;
 }
 /*# sourceMappingURL=style.css.map */
