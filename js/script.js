@@ -2,6 +2,19 @@
 
 {
 
+  const opt {
+    articleSelector: '.post',
+    titleSelector: '.post-title',
+    titleListSelector: '.titles',
+    articleTagsSelector: '.post-tags .list',
+    articleAuthorSelector: '.post-author',
+    tagsListSelector: '.tags.list', //coś innego w html <ul class="list tags">
+    cloudClassCount: '5',
+    cloudClassPrefix: 'tag-size-',
+    authorsListSelector: '.list .authors'
+  };
+
+  /*
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
@@ -12,6 +25,7 @@
     optCloudClassCount = '5',
     optCloudClassPrefix = 'tag-size-',
     optAuthorsListSelector = '.list .authors';
+  */
 
   const titleClickHandler = function (event) {
     event.preventDefault();
@@ -75,10 +89,10 @@
     console.log('generateTitleLinks- czy została wykonana?');
 
     /* remove contents of titleList */
-    const titleList = document.querySelector(optTitleListSelector).innerHTML;
+    const titleList = document.querySelector(opt.titleListSelector).innerHTML;
 
     /* for each article */
-    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    const articles = document.querySelectorAll(opt.articleSelector + customSelector);
     console.log('customSelector:', customSelector);
 
     for (let article of articles) {
@@ -89,7 +103,7 @@
       console.log('clickedElementsAttribute:', articleId);
 
       /* find the title element, zapisz do const */
-      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+      const articleTitle = article.querySelector(opt.titleSelector).innerHTML;
 
       /* get the title from the title element, zapisz do const */
 
@@ -212,10 +226,10 @@
     const normalizedCount = count - params.min;
     const normalizedMax = params.max - params.min;
     const percentage = normalizedCount / normalizedMax;
-    const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+    const classNumber = Math.floor(percentage * (opt.cloudClassCount - 1) + 1);
 
     /* classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * optCloudClassCount + 1 ); */
-    return optCloudClassPrefix;
+    return opt.cloudClassPrefix;
   }
 
   // wywołać ?? calculateTagClass(count, params);
@@ -232,7 +246,7 @@
       article.classList.contains('post');
 
       /* find tags wrapper */
-      const titleList = article.querySelector(optArticleTagsSelector).innerHTML;
+      const titleList = article.querySelector(opt.articleTagsSelector).innerHTML;
 
       /* make html variable with empty string */
       let html = '';
@@ -402,10 +416,10 @@
     const normalizedCount = count - params.min;
     const normalizedMax = params.max - params.min;
     const percentage = normalizedCount / normalizedMax;
-    const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+    const classNumber = Math.floor(percentage * (opt.cloudClassCount - 1) + 1);
 
     /* classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * optCloudClassCount + 1 ); */
-    return optCloudClassPrefix;
+    return opt.cloudClassPrefix;
   }
 
   // wywołać ?? calculateAuthorClass(count, params);
@@ -415,14 +429,14 @@
     let allAuthors = {};
 
     /* find all authors */
-    const authors = document.querySelectorAll(optArticleAuthorSelector);
+    const authors = document.querySelectorAll(opt.articleAuthorSelector);
 
     /* START LOOP: for every author: */
     for (let author of authors) {
       author.classList.contains('.post-author');
 
       /* find authors wrapper */
-      const authorList = author.querySelector(optArticleAuthorSelector).innerHTML;
+      const authorList = author.querySelector(opt.articleAuthorSelector).innerHTML;
 
       /* make html variable with empty string */
       let html = '';
@@ -450,7 +464,7 @@
       authorList.innerHTML = authorList.innerHTML + authorHTMLLink;
 
       /* 5.a [NEW] find list of authors in right column */
-      const authorList2 = document.querySelector(optAuthorsListSelector);
+      const authorList2 = document.querySelector(opt.authorsListSelector);
 
       /*
       i dodajemy do niej wszystkie linki znajdujące się w tablicy
